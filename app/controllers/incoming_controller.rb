@@ -9,7 +9,8 @@ class IncomingController < ApplicationController
   def create
     # You put the message-splitting and business
     # magic here.
-    # Find the user by using params[:sender] 
+    # Find the user by using params[:sender]
+    Rails.logger params.inspect
     @user = User.find(params[:sender])
     # Find the topic by using params[:subject]
     @topic = Topic.find(params[:subject])
