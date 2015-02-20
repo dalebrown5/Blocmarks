@@ -11,17 +11,17 @@ class IncomingController < ApplicationController
     # magic here.
     # Find the user by using params[:sender]
     puts ">>>>>>>>>> #{params.inspect}"
-    @user = User.find(params[:sender])
+    # @user = User.find(params[:sender])
     # Find the topic by using params[:subject]
-    @topic = Topic.find(params[:subject])
+    # @topic = Topic.find(params[:subject])
     # Assign the url to a variable after retreiving it from params["body-plain"]
-    @body = params["body-plain"]
+    # @body = params["body-plain"]
     # Check if user is nil, if so, create and save a new user
-    if user == nil?
-    end
+    # if user == nil?
+    # end
     # Check if the topic is nil, if so, create and save a new topic
-    if topic == nil?
-    end
+    # if topic == nil?
+    # end
     # Now that we're sure we have a valid user and topic, build and save a new bookmark
 
     # Assuming all went well. 
