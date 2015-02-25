@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:update, :show, :index]
 
   resources :topics do
-    resources :bookmarks, only: [:show, :create, :update]
+    resources :bookmarks, except: [:index]
   end
 
   post :incoming, to: 'incoming#create'

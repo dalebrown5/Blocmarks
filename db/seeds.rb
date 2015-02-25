@@ -45,7 +45,20 @@ Topic.create!(
 title: 'Programming'
 )
 
+topics = Topic.all
+
+# Create Bookmarks
+topics.each do |topic|
+  5.times do
+    topic.bookmarks.create!(
+    url: Faker::Internet.url('example.com') 
+  )
+  end
+end
+
+bookmarks = Bookmark.all
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Topic.count} lists created"
-# # puts "#{.count} items created"
+puts "#{Bookmark.count} items created"

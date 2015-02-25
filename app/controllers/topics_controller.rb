@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @bookmarks = @topic.bookmarks
   end
 
   def new
@@ -28,25 +29,25 @@ class TopicsController < ApplicationController
   end
 
   def update
-     @topic = Topic.find(params[:id])
-     if @topic.update_attributes(params.require(:topic).permit(:title))
-       flash[:notice] = "Topic was updated."
-       redirect_to topics_path
-     else
-       flash[:error] = "There was an error saving the topic. Please try again."
-       render :edit
-     end
-   end
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(params.require(:topic).permit(:title))
+      flash[:notice] = "Topic was updated."
+      redirect_to topics_path
+    else
+      flash[:error] = "There was an error saving the topic. Please try again."
+      render :edit
+    end
+  end
 
-   def destroy
-     @topic = Topic.find(params[:id])
-     if @topic.destroy
+  def destroy
+    @topic = Topic.find(params[:id])
+    if @topic.destroy
       flash[:notice] = "Topic was deleted successfully."
-       redirect_to topics_path
-     else
-       flash[:error] = "There was an error deleting the topic."
-       render :show
-     end
-   end
+      redirect_to topics_path
+    else
+      flash[:error] = "There was an error deleting the topic."
+      render :show
+    end
+  end
 
 end

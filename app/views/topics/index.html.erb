@@ -1,13 +1,17 @@
 <h1>Topic Titles</h1>
 <br>
+<%= link_to "New Topic", new_topic_path %>
+<br>
 <% @topics.each do |topic| %>
-   <div class="media">
-     <div class="media-body">
-       <h4 class="media-heading">
-         <%= link_to topic.title, topic %>
-       </h4>
-     </div>
-   </div>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to topic.title, topic %>
+      </h4>
+      <% topic.bookmarks.each do |bookmark| %>
+        <%= link_to bookmark.url %><br>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 <br>
-
