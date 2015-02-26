@@ -9,14 +9,22 @@ class IncomingController < ApplicationController
 
     puts ">>>>>>>>>> #{params.inspect}"
     
-    @user = User.find_by(email: params[:sender]) 
-    @topic = Topic.find_by(email: params[:subject])
-    @url = params["body-plain"]
+    @user = User.find_by(email: params[:sender])
+    if @user
+      
+    else
+      @user = User.create(email: params[:sender])
+    end
+    puts @user
+    # @topic = Topic.find_by(email: params[:subject])
+    # @url = params["body-plain"]
 
-    # if user == nil?
+    # if @user_id == nil?
+    # user.create
     # end
 
-    # if topic == nil?
+    # if @topic_id == nil?
+    # topic.create
     # end
 
     # You put the message-splitting and business
@@ -33,3 +41,4 @@ class IncomingController < ApplicationController
   end
   
 end
+# RestClient.post 'http://localhost:3000/incoming', {params: {sender: 'bdsimmons1@gmail.com'}}
