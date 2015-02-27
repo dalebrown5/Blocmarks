@@ -48,13 +48,13 @@ title: 'Programming'
 topics = Topic.all
 
 # Create Bookmarks
-topics.each do |topic|
-  5.times do
-    topic.bookmarks.create!(
-    url: Faker::Internet.url('example.com') 
-  )
-  end
-end
+# topics.each do |topic|
+#   5.times do
+#     topic.bookmarks.create!(
+#     url: Faker::Internet.url('example.com') 
+#   )
+#   end
+# end
 
 bookmarks = Bookmark.all
 

@@ -34,6 +34,8 @@ gem 'bootstrap-sass', '3.2.0.2'
 
 gem 'devise', '~> 3.4.1'
 
+gem 'pundit'
+
 gem 'haml', '~> 4.0.6'
 
 gem 'figaro', '1.0'
