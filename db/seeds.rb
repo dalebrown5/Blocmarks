@@ -31,30 +31,51 @@ standard.save!
 users = User.all
 
 Topic.create!(
-# user: user,  
+user_id: "1",  
 title: 'Test Topic'
 )
 
 Topic.create!(
-# user: user,  
+user_id: "2", 
 title: 'Funny'
 )
 
 Topic.create!(
-# user: user,  
+user_id: "3", 
 title: 'Programming'
 )
 
 topics = Topic.all
 
 # Create Bookmarks
-# topics.each do |topic|
-#   5.times do
-#     topic.bookmarks.create!(
-#     url: Faker::Internet.url('example.com') 
-#   )
-#   end
-# end
+topics.each do |topic|
+  2.times do
+    topic.bookmarks.create!(
+    user_id: "1",  
+    url: Faker::Internet.url('example.com') 
+  )
+  end
+end
+
+# Create Bookmarks
+topics.each do |topic|
+  2.times do
+    topic.bookmarks.create!(
+    user_id: "2",  
+    url: Faker::Internet.url('example.com') 
+  )
+  end
+end
+
+# Create Bookmarks
+topics.each do |topic|
+  2.times do
+    topic.bookmarks.create!(
+    user_id: "3",  
+    url: Faker::Internet.url('example.com') 
+  )
+  end
+end
 
 bookmarks = Bookmark.all
 

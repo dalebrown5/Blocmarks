@@ -6,8 +6,12 @@
 <br>
 <br>
 <% @bookmarks.each do |bookmark| %>
-  <p><%= link_to "Delete", topic_bookmark_path(@topic, bookmark), method: :delete %>
-  <%=link_to bookmark.url %></p>
+  <p>
+    <%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %>
+    <%= link_to "Delete", topic_bookmark_path(@topic, bookmark), method: :delete %>
+    <%=link_to bookmark.url, bookmark.url, target: '_blank' %>
+    Added by: <%= bookmark.user.email %>
+  </p>
 <% end %>  
 <br>
 

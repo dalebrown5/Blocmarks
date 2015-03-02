@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @bookmarks = Bookmark.all
@@ -24,15 +25,17 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+    @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
   end
 
   def update
-    @bookmark = Bookmark.find(params[id])
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = @topic.bookmarks.find(params[:id])
     authorize @bookmark
 
-    if bookmark.update_attributes(params.require(:bookmark).permit(:url))
-      redirect to topics_path, notice: "Bookmark was updated"
+    if @bookmark.update_attributes(params.require(:bookmark).permit(:url))
+      redirect_to topics_path, notice: "Bookmark was updated"
     else
       flash[:error] = "Error updating bookmark"
       render :edit
