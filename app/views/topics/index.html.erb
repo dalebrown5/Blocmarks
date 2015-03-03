@@ -1,6 +1,4 @@
 <h1>All Bookmarks</h1>
-<%= link_to "New Topic", new_topic_path %>
-<br>
 <br>
 <h6>Click on "Topic Title" to create New Bookmark</h6>
 <br>
@@ -11,6 +9,7 @@
         <%= link_to topic.title, topic %>
       </h3>
       <% topic.bookmarks.each do |bookmark| %>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         <%= link_to bookmark.url, bookmark.url, target: '_blank' %>
         Added by: <%= bookmark.user.email %><br>
       <% end %>

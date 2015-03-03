@@ -1,0 +1,9 @@
+<% if like = current_user.liked(bookmark) %>
+  <%= link_to [bookmark, like], method: :delete, remote: true do %>
+    <i id="bookmark-<%= bookmark.id %>" class="glyphicon glyphicon-star"> </i>
+  <% end %>
+<% else %>
+  <%= link_to [bookmark, Like.new], method: :post, remote: true do %>
+    <i id="bookmark-<%= bookmark.id %>" class="glyphicon glyphicon-star-empty"> </i>
+  <% end %>
+<% end %>

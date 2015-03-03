@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :bookmarks, except: [:index]
   end
 
+  resources :bookmarks, except: [:index] do
+    resources :likes, only: [:create, :destroy]
+  end
+
   post :incoming, to: 'incoming#create'
   
   get 'about' => 'welcome#about'
