@@ -8,10 +8,8 @@ class LikesController < ApplicationController
  
     if like.save
       flash[:notice] = "Like status added"
-      # redirect_to topics_path
     else
       flash[:error] = "Error updating Like status"
-      # redirect_to topics_path
     end
 
     respond_to do |format|
@@ -27,10 +25,8 @@ class LikesController < ApplicationController
 
     if like.destroy
       flash[:notice] = "Like status removed"
-      # redirect_to topics_path
     else
       flash[:error] = "Error removing Like status"
-      # redirect_to topics_path
     end
 
     respond_to do |format|

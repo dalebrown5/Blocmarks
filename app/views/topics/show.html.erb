@@ -5,13 +5,25 @@
 <br>
 <br>
 <br>
+<div>
+  <table class="table">
+    <thead>
+            <tr>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Bookmark URL</th>
+            <th>Added By</th>
+            </tr>
+        </thead>
 <% @bookmarks.each do |bookmark| %>
-  <p>
-    <%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %>
-    <%= link_to "Delete", topic_bookmark_path(@topic, bookmark), method: :delete %>
-    <%=link_to bookmark.url, bookmark.url, target: '_blank' %>
-    Added by: <%= bookmark.user.email %>
-  </p>
-<% end %>  
-<br>
+      <tbody>
+        <tr>
+          <td><%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></td>
+          <td><%= link_to "Delete", topic_bookmark_path(@topic, bookmark), method: :delete %></td>
+          <td><%=link_to bookmark.url, bookmark.url, target: '_blank' %></td>
+          <td><%= bookmark.user.email %></td>
+        </tr> 
+      </tbody>
+  <% end %>
+</div>
 

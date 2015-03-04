@@ -2,18 +2,27 @@
 <br>
 <h6>Click on "Topic Title" to create New Bookmark</h6>
 <br>
-<% @topics.each do |topic| %>
-  <div class="media">
-    <div class="media-body">
-      <h3 class="media-heading">
-        <%= link_to topic.title, topic %>
-      </h3>
-      <% topic.bookmarks.each do |bookmark| %>
-        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-        <%= link_to bookmark.url, bookmark.url, target: '_blank' %>
-        Added by: <%= bookmark.user.email %><br>
-      <% end %>
+  <div>
+    <% @topics.each do |topic| %> 
+      <table class="table"> 
+          <h4><%= link_to topic.title, topic %></h4>
+        <thead>
+            <tr>
+            <th>Liked</th>
+            <th>Bookmark URL</th>
+            <th>Added By</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% topic.bookmarks.each do |bookmark| %>
+            <tr> 
+            <td><%= render partial: 'likes/like', locals: { bookmark: bookmark } %></td>
+            <td><%= link_to bookmark.url, bookmark.url, target: '_blank' %></td>
+            <td><%= bookmark.user.email %></td>
+            </tr> 
+          <% end %>
+        </tbody>
+        <% end %>
+      </table>
     </div>
-  </div>
-<% end %>
 <br>
