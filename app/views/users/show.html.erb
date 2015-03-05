@@ -1,0 +1,47 @@
+<div>
+    <table class="table"> 
+        <h3>My Bookmarks</h3>
+      <thead>
+          <tr>
+          <th>Liked</th>
+          <th>Topic</th>
+          <th>Bookmark URL</th>
+          <th>Added By</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @user_bookmarks.each do |bookmark| %>
+          <tr>
+          <td><%= render partial: 'likes/like', locals: { bookmark: bookmark } %></td>
+          <td><%= bookmark.topic.title %></td>
+          <td><%= link_to bookmark.url, bookmark.url, target: '_blank' %></td>           
+          <td><%= bookmark.user.email %></td>
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<br>
+<div>
+    <table class="table"> 
+        <h3>My Liked Bookmarks</h3>
+      <thead>
+          <tr>
+          <th>Liked</th>
+          <th>Topic</th>
+          <th>Bookmark URL</th>
+          <th>Added By</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @user_liked_bookmarks.each do |bookmark| %>
+          <tr>
+          <td><%= render partial: 'likes/like', locals: { bookmark: bookmark } %></td>
+          <td><%= bookmark.topic.title %></td>
+          <td><%= link_to bookmark.url, bookmark.url, target: '_blank' %></td>           
+          <td><%= bookmark.user.email %></td>
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
+</div>
