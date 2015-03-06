@@ -8,14 +8,27 @@ class IncomingController < ApplicationController
   def create
 
     puts ">>>>>>>>>> #{params.inspect}"
-    
-    @user = User.find_by(email: params[:sender])
-    if @user
-      
+
+    user = User.find_by(email: params[:sender])
+    subject = params[:subject]
+    content = params[:'body-plain']
+
+    topic = user.topics.find_or_create_by(title: subject)
+
+    bookmark = user.bookmarks.build(topic: topic, url: content)
+
+    if bookmark.save
+      head 200
     else
-      @user = User.create(email: params[:sender])
+      head :no_content
     end
-    puts @user
+
+    # if @user
+      
+    # else
+    #   @user = User.create(email: params[:sender])
+    # end
+    # puts @user
     # @topic = Topic.find_by(email: params[:subject])
     # @url = params["body-plain"]
 
